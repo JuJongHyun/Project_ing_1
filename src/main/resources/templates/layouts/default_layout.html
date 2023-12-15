@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8" />
+    <title>thymeleaf layout</title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1, user-scalable=yes,initial-scale=1.0" />
+    
+    <!--CSS-->
+    	<link href="css/font-awesome.min.css" rel="stylesheet">
+		<link href="css/animate.min.css" rel="stylesheet" type="text/css">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/carousel.css" type="text/css" rel="stylesheet"/>
+		<link href="css/isotope/style.css" rel="stylesheet">
+		<link href="css/responsive.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		
+	<!--JS-->
+	 	<script src="js/jquery-1.12.3.min.js"></script>
+	 	<script src="js/waypoints.min.js"></script>
+	 	<script src="js/jquery.counterup.min.js"></script>
+	 	<script>
+            //for counter up
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        </script>
+        <script src="js/gmaps.min.js"></script>
+        <script type="text/javascript">
+            var map;
+            $(document).ready(function () {
+                map = new GMaps({
+                    el: '#map',
+                    lat: 23.6911078,
+                    lng: 90.5112799,
+                    zoomControl: true,
+                    zoomControlOpt: {
+                        style: 'SMALL',
+                        position: 'LEFT_BOTTOM'
+                    },
+                    panControl: false,
+                    streetViewControl: false,
+                    mapTypeControl: false,
+                    overviewMapControl: false,
+                    scrollwheel: false,
+                });
+
+
+                map.addMarker({
+                    lat: 23.6911078,
+                    lng: 90.5112799,
+                    title: 'Office',
+                    details: {
+                        database_id: 42,
+                        author: 'Foysal'
+                    },
+                    click: function (e) {
+                        if (console.log)
+                            console.log(e);
+                        alert('You clicked in this marker');
+                    },
+                    mouseover: function (e) {
+                        if (console.log)
+                            console.log(e);
+                    }
+                });
+            });
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjxvF9oTfcziZWw--3phPVx1ztAsyhXL4"></script>
+        <script src="js/isotope/min/scripts-min.js"></script>
+        <script src="js/isotope/cells-by-row.js"></script>
+        <script src="js/isotope/isotope.pkgd.min.js"></script>
+        <script src="js/isotope/packery-mode.pkgd.min.js"></script>
+        <script src="js/isotope/scripts.js"></script>
+ 		<script src="js/backtotop.js"></script>
+ 		<script src="js/jquery.localScroll.min.js"></script>
+        <script src="js/jquery.scrollTo.min.js"></script>
+        <script src="js/wow.min.js"></script>
+         <script>
+            new WOW().init();
+        </script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+
+
+		
+    
+    <!-- content script -->
+    <th:block layout:fragment="css"></th:block>
+
+    <!-- content script -->
+    <th:block layout:fragment="script"></th:block>
+</head>
+<body>
+    <!-- header fragment 사용 -->
+    <th:block th:replace="fragments/header :: headerFragment"></th:block>
+    <!-- content fragment 사용 -->
+    <th:block layout:fragment="content"></th:block>
+    <!-- footer fragment 사용 -->
+    <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+</body>
+</html>
